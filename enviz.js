@@ -10,14 +10,7 @@ let tooltip = d3.select("body").append("div")
 */
 function genLinks(courses){
     //TODO: cleaner code
-    links = [];
-    courses.forEach((course)=>{
-        course.prerequisites.forEach((pre)=>{
-           links.push({"source": course.id, "target": pre});
-        });
-    });
-
-    return links;
+    return courses.map((course)=> course.prerequisites.map((pre) => ({"source": course.id, "target": pre }))).reduce((a, b) => a.concat(b), []);
 }
 
 /**
