@@ -10,14 +10,14 @@ let defaultFile = "enrollmentData/f16.json";
 let globalSim;
 
 //Portion of the class that is full (enrolled)
-let fullColor = "rgb(8, 48, 107)";
+let fullColor = "rgb(48, 88, 147)";
 //Portion of the class that is free (capacity - enrollment)
 let emptyColor = "grey";
 
 let colorScale = d3.scalePow()
-    .exponent(2.8)
+    .exponent(1.8)
     .clamp(true)
-    .domain([0, 1.30])
+    .domain([0, 1.25])
     .range([fullColor, "red"]);
 
 //Contains reusable definitions
@@ -210,7 +210,7 @@ function updateRadius(){
         .attr("r", d => d.innerR);
 }
 function updateCollision(){
-    let padding = 10;
+    let padding = 20;
     globalSim.force("collide")
         .radius(d => d.outerR + padding);
 }
@@ -236,6 +236,11 @@ function updateGraph(){
     updateCollision();
     updateColors();
     updateTips();
+    
+    //hacky
+    d3.select("text.legendTitle")
+        .style("font-weight", "bold")
+        .style("font", "Helvetica");
 }
 
 d3.json("csbs.json", courses =>{
