@@ -250,6 +250,8 @@ d3.json("csbs.json", courses =>{
     let labelGroup = initLabels(courses);
     let colorLegendGroup = initColorLegend();
     
+    updateEnrollment("enrollmentData/f16.json");
+    
     globalSim = initSim(courses, links);
     globalSim.on("tick", ticked);
     function ticked(){
@@ -286,7 +288,7 @@ d3.json("csbs.json", courses =>{
             .attr("y", d => d.y - 5);
     }
     
-    updateEnrollment("enrollmentData/f16.json");
+
 });
 
 function dist(x1,x2,y1,y2){
