@@ -5,7 +5,7 @@ let svg = d3.select("svg"),
 let tooltip = d3.select("body").append("div")
     .attr("class", "toolTip");
 
-let defaultFile = "enrollmentData/f16.json";
+let defaultFile = "enrollmentData/sfsu.json";
 //Defined globally so it can be updated
 let globalSim;
 
